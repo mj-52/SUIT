@@ -222,7 +222,7 @@ def martingale_strategy(pair, action):
     else:
         global_value.logger("LOSS. Resetting.", "INFO")
 
-def wait_until_next_candle(period_seconds=300, seconds_before=20):
+def wait_until_next_candle(period_seconds=300, seconds_before=30):
     while True:
         now = datetime.now(timezone.utc)
         next_candle = ((now.timestamp() // period_seconds) + 1) * period_seconds
@@ -246,8 +246,8 @@ def main_trading_loop():
             time.sleep(5)
             continue
 
-        wait_until_next_candle(period_seconds=period, seconds_before=20)
-        global_value.logger("🕒 20 seconds before candle. Preparing data and predictions...", "INFO")
+        wait_until_next_candle(period_seconds=period, seconds_before=30)
+        global_value.logger("🕒 30 seconds before candle. Preparing data and predictions...", "INFO")
 
         selected_pair = None
         selected_action = None
@@ -281,3 +281,4 @@ def main_trading_loop():
 
 if __name__ == "__main__":
     main_trading_loop()
+

@@ -1,4 +1,4 @@
-name: i_anda_ST
+name: Suit
 
 on:
   workflow_dispatch:    # Manual run
@@ -6,7 +6,7 @@ on:
     - cron: "0 */6 * * *"  # At minute 0, every 6th hour
 
 concurrency:
-  group: i_anda_ST
+  group: Suit
   cancel-in-progress: true
 
 jobs:

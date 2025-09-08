@@ -1,5 +1,5 @@
-pandas==1.5.3
-numpy>=1.21.0,<1.26.0
+pandas==2.2.2
+numpy>=1.26.4,<2.0.0
 pandas-ta-openbb>=0.4.0
 scikit-learn==1.7.0
 python-dotenv==1.1.1
@@ -11,4 +11,5 @@ tzlocal>=5.1
 websockets>=12.0
 colorama>=0.4.6
 xgboost>=3.0.0
+
 

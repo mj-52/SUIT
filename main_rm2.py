@@ -51,7 +51,7 @@ def get_oanda_candles(pair, granularity="M5", count=500):
         df['time'] = pd.to_datetime(df['time'])
         return df
     except Exception as e:
-        global_value.logger(f"[ERROR]: OANDA candle fetch failed for {pair} - {str(e)}", "ERROR")
+        global_value.logger(f"[ERROR]: OANDA candle fetch failed for {pair} ", "ERROR")
         return None
 
 def get_payout():
@@ -281,4 +281,5 @@ def main_trading_loop():
 
 if __name__ == "__main__":
     main_trading_loop()
+
 

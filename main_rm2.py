@@ -25,7 +25,7 @@ min_payout = 80
 period = 300
 expiration = 300
 INITIAL_AMOUNT = 1
-MARTINGALE_LEVEL = 1
+MARTINGALE_LEVEL = 3
 PROB_THRESHOLD = 0.76
 
 api = PocketOption(ssid, demo)
@@ -281,6 +281,7 @@ def main_trading_loop():
 
 if __name__ == "__main__":
     main_trading_loop()
+
 
 
 

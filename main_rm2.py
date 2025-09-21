@@ -26,7 +26,7 @@ period = 300
 expiration = 300
 INITIAL_AMOUNT = 1
 MARTINGALE_LEVEL = 3
-PROB_THRESHOLD = 0.76
+PROB_THRESHOLD = 0.6
 
 api = PocketOption(ssid, demo)
 api.connect()
@@ -129,7 +129,7 @@ def train_and_predict(df):
 
     latest_dir = df.iloc[-1]['SUPERTd_10_3.0']
     current_trend = df.iloc[-1]['SUPERT_10_3.0']
-    past_trend = df.iloc[-3]['SUPERT_10_3.0']
+    past_trend = df.iloc[-2]['SUPERT_10_3.0']
     rsi = df.iloc[-1]['RSI']
 
     # Calculate pivots
@@ -281,6 +281,7 @@ def main_trading_loop():
 
 if __name__ == "__main__":
     main_trading_loop()
+
 
 
 

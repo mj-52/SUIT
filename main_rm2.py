@@ -26,7 +26,7 @@ period = 300
 expiration = 300
 INITIAL_AMOUNT = 1
 MARTINGALE_LEVEL = 3
-PROB_THRESHOLD = 0.6
+PROB_THRESHOLD = 0.76
 
 api = PocketOption(ssid, demo)
 api.connect()

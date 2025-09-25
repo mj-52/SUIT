@@ -21,7 +21,7 @@ ssid = os.getenv("PO_SSID")
 demo = True
 
 # Bot Settings
-min_payout = 60
+min_payout = 80
 period = 300
 expiration = 300
 INITIAL_AMOUNT = 1
@@ -51,7 +51,7 @@ def get_oanda_candles(pair, granularity="M5", count=500):
         df['time'] = pd.to_datetime(df['time'])
         return df
     except Exception as e:
-        global_value.logger(f"[ERROR]: OANDA candle fetch failed for {pair} ", "ERROR")
+        global_value.logger(f"[ERROR]: OANDA candle fetch failed for {pair} - {str(e)}", "ERROR")
         return None
 
 def get_payout():
@@ -129,7 +129,7 @@ def train_and_predict(df):
 
     latest_dir = df.iloc[-1]['SUPERTd_10_3.0']
     current_trend = df.iloc[-1]['SUPERT_10_3.0']
-    past_trend = df.iloc[-2]['SUPERT_10_3.0']
+    past_trend = df.iloc[-3]['SUPERT_10_3.0']
     rsi = df.iloc[-1]['RSI']
 
     # Calculate pivots
@@ -222,7 +222,7 @@ def martingale_strategy(pair, action):
     else:
         global_value.logger("LOSS. Resetting.", "INFO")
 
-def wait_until_next_candle(period_seconds=300, seconds_before=30):
+def wait_until_next_candle(period_seconds=300, seconds_before=20):
     while True:
         now = datetime.now(timezone.utc)
         next_candle = ((now.timestamp() // period_seconds) + 1) * period_seconds
@@ -246,8 +246,8 @@ def main_trading_loop():
             time.sleep(5)
             continue
 
-        wait_until_next_candle(period_seconds=period, seconds_before=30)
-        global_value.logger("🕒 30 seconds before candle. Preparing data and predictions...", "INFO")
+        wait_until_next_candle(period_seconds=period, seconds_before=20)
+        global_value.logger("🕒 20 seconds before candle. Preparing data and predictions...", "INFO")
 
         selected_pair = None
         selected_action = None
@@ -281,9 +281,3 @@ def main_trading_loop():
 
 if __name__ == "__main__":
     main_trading_loop()
-
-
-
-
-
-
